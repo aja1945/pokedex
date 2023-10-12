@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Pokedex</h1>
+    <form action="/get_pokemon" method="post">
+        <label for="pokemon_name">Enter a Pokemon Name:</label>
+        <input type="text" id="pokemon_name" name="pokemon_name" required>
+        <input type="submit" value="Submit">
+    </form>
+    
+    {% if name %}
+    <h2>Name: {{ name }}</h2>
+    <img src="{{ image_url }}" alt="{{ name }}">
+    <h3>Abilities:</h3>
+    <ul>
+        {% for ability in abilities %}
+            <li>{{ ability }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
